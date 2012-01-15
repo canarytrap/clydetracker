@@ -94,11 +94,19 @@ function toggle_story_details(div_id)
                     </select>
                     <br /><br />
 
-                    Assignee:                    
+                    Assignee:
                     <select name="assignee_id">
                     <option value="">--none--</option>
                     <% @users.each do |user| %>
                         <option value="<%= user.id %>" <%= story.assignee_id == user.id ? "selected" : "" %>><%= user.name %></option>
+                    <% end %>
+                    </select>
+                    <br /><br />
+                    
+                    Type:
+                    <select name="story_type_id">
+                    <% @story_types.each do |story_type| %>
+                        <option value="<%= story_type.id %>" <%= story.story_type_id == story_type.id ? "selected" : "" %>><%= story_type.name %></option>
                     <% end %>
                     </select>
                     <br /><br />
