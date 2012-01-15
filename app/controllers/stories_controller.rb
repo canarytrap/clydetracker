@@ -46,19 +46,23 @@ class StoriesController < ApplicationController
       return redirect_to root_url
     end
     
-    @story = Story.new
-    @story.title          = params[:title]
+    @story = Story.new    
     @story.author_id      = 1
     @story.section_id     = 1
 
     # parse first word for story type
     if params[:title].index("bug") == 0
       @story.story_type_id = 3
+      story_title = params[:title][3, params[:title].length]
     elsif params[:title].index("tech") == 0
       @story.story_type_id = 2
+      story_title = params[:title][4, params[:title].length]
     else
       @story.story_type_id = 1
+      story_title = params[:title]
     end
+    
+    @story.title = story_title
 
     respond_to do |format|
       if @story.save
