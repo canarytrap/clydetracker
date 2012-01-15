@@ -81,11 +81,19 @@ function toggle_story_details(div_id)
                     Title:<br />
                     <input type="text" name="title" value="<%= story.title %>" size="60">
                     <br /><br />
-                    Description:&nbsp;
+                    Description:<br />
                     <textarea name="description" cols="45" rows="5"><%= story.description %></textarea>
                     <br /><br />
                     Points:<br />
                     <input type="text" name="points" value="<%= story.points %>" size="4">
+                    <br /><br />
+                    Assignee:                    
+                    <select name="assignee_id">
+                    <option value="">--none--</option>
+                    <% @users.each do |user| %>
+                        <option value="<%= user.id %>" <%= story.assignee_id == user.id ? "selected" : "" %>><%= user.name %></option>
+                    <% end %>
+                    </select>
                     <br /><br />
                     <%= f.submit 'Update' %>
                 <% end %>                
