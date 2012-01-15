@@ -29,6 +29,7 @@
     text-align:left;
     background-color:yellow;
     display:none;
+    padding:5px;
 }
 </style>
 
@@ -73,8 +74,14 @@ function toggle_story_details(div_id)
             </div>
 
             <!-- hidden div with details -->
-            <div class="icebox_story_details" id="icebox_story_details_<%= i %>">
-                details here for <%= story.title %>
+            <!-- TODO: turn into a partial -->
+            <div class="icebox_story_details" id="icebox_story_details_<%= i %>">  
+                <% form_for(story) do |f| %>
+                    Title:&nbsp;
+                    <input type="text" name="title" value="<%= story.title %>" size="60">
+                    <br /><br />
+                    <%= f.submit 'Update' %>
+                <% end %>                
             </div>
 
         <% end %>  

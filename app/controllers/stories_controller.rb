@@ -79,14 +79,21 @@ class StoriesController < ApplicationController
   # PUT /stories/1.xml
   def update
     @story = Story.find(params[:id])
+    
+    # TODO: move everything below to model
+    if params[:title].empty?
+      flash[:notice] = 'You did not enter anything.'
+      return redirect_to root_url
+    end
+
+    @story.title = params[:title]
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
-        flash[:notice] = 'Story was successfully updated.'
-        format.html { redirect_to(@story) }
+        format.html { redirect_to root_url }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to root_url }
         format.xml  { render :xml => @story.errors, :status => :unprocessable_entity }
       end
     end
