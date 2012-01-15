@@ -40,12 +40,29 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.xml
   def create
-    @story = Story.new(params[:story])
+    # TODO: move everything below to model
+    if params[:title].empty?
+      flash[:notice] = 'You did not enter anything.'
+      return redirect_to root_url
+    end
+    
+    @story = Story.new
+    @story.title          = params[:title]
+    @story.author_id      = 1
+    @story.section_id     = 1
+
+    # parse first word for story type
+    if params[:title].index("bug") == 0
+      @story.story_type_id = 3
+    elsif params[:title].index("tech") == 0
+      @story.story_type_id = 2
+    else
+      @story.story_type_id = 1
+    end
 
     respond_to do |format|
       if @story.save
-        flash[:notice] = 'Story was successfully created.'
-        format.html { redirect_to(@story) }
+        format.html { redirect_to root_url }
         format.xml  { render :xml => @story, :status => :created, :location => @story }
       else
         format.html { render :action => "new" }

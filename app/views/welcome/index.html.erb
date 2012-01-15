@@ -1,1 +1,58 @@
-<h3>welcome!</h3>
+<style type="text/css" media="screen">
+#icebox {
+    background-color:#99FFFF;
+    width:400px;
+    float:right;
+    color:#282828;
+    padding:5px;
+}
+.story {
+    background-color:#ffffff;
+    width:390px;
+    padding:4px;
+    margin:2px;
+    text-align:left;
+}
+#new_story {
+    background-color:#99FFFF;
+    width:900px;
+    clear:both;
+    height:110px;
+    padding:4px;    
+}
+.new_story_input {
+    height:40px;
+    width:800px;
+    font-size:18px;
+}
+ 
+</style>
+<div align="center">
+    <div id="new_story">
+        <h2>What needs to get done?</h2>
+        <% form_tag("/stories", :method => "post") do %>
+            <input class="new_story_input" type="text" name="title">&nbsp;
+            <%= submit_tag("Save") %>
+        <% end %>    
+    </div>
+</div>
+
+<p><br />
+
+<div id="icebox">
+    <h2>Icebox</h2>        
+    <% @stories.each do |story| %>
+        <% if story.section_id == 1 %>
+            <div class="story">                
+                <% if story.story_type_id == 1 %>
+                    <img src="http://icons.iconarchive.com/icons/simiographics/mixed/256/Book-icon.png" border="0" width="20">
+                <% elsif story.story_type_id == 2 %>
+                    <img src="http://c.dryicons.com/images/icon_sets/stickers_icon_set/png/128x128/tool.png" border="0" width="20">
+                <% elsif story.story_type_id == 3 %>
+                    <img src="http://themify.me/wp-content/uploads/2010/11/bug-icon.gif" border="0" width="20">
+                <% end %>
+                <i><%= story.title %></i>
+            </div>
+        <% end %>    
+    <% end %>    
+</div>
