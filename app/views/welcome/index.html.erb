@@ -69,8 +69,9 @@ function toggle_story_details(div_id)
                 <% elsif story.story_type_id == 3 %>
                     <img src="images/bug-icon.gif" border="0" width="20">
                 <% end %>
-                <i><%= story.title %></i>
-                <span style="float:right; cursor:pointer;" onclick="toggle_story_details('icebox_story_details_<%= i %>')">+</span>
+                <i><%= story.title %></i>                
+                <span style="float:right; cursor:pointer; padding:0px 0px 0px 10px;" onclick="toggle_story_details('icebox_story_details_<%= i %>')">+</span>
+                <span style="float:right;"><%= story.points %></span>
             </div>
 
             <!-- hidden div with details -->
@@ -82,6 +83,9 @@ function toggle_story_details(div_id)
                     <br /><br />
                     Description:&nbsp;
                     <textarea name="description" cols="45" rows="5"><%= story.description %></textarea>
+                    <br /><br />
+                    Points:<br />
+                    <input type="text" name="points" value="<%= story.points %>" size="4">
                     <br /><br />
                     <%= f.submit 'Update' %>
                 <% end %>                

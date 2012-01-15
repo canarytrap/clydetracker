@@ -88,6 +88,7 @@ class StoriesController < ApplicationController
 
     @story.title        = params[:title]
     @story.description  = params[:description]
+    @story.points       = params[:points]
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
