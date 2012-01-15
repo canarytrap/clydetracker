@@ -77,8 +77,11 @@ function toggle_story_details(div_id)
             <!-- TODO: turn into a partial -->
             <div class="icebox_story_details" id="icebox_story_details_<%= i %>">  
                 <% form_for(story) do |f| %>
-                    Title:&nbsp;
+                    Title:<br />
                     <input type="text" name="title" value="<%= story.title %>" size="60">
+                    <br /><br />
+                    Description:&nbsp;
+                    <textarea name="description" cols="45" rows="5"><%= story.description %></textarea>
                     <br /><br />
                     <%= f.submit 'Update' %>
                 <% end %>                

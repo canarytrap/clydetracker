@@ -79,14 +79,15 @@ class StoriesController < ApplicationController
   # PUT /stories/1.xml
   def update
     @story = Story.find(params[:id])
-    
+
     # TODO: move everything below to model
     if params[:title].empty?
       flash[:notice] = 'You did not enter anything.'
       return redirect_to root_url
     end
 
-    @story.title = params[:title]
+    @story.title        = params[:title]
+    @story.description  = params[:description]
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
