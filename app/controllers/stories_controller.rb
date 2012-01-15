@@ -90,6 +90,7 @@ class StoriesController < ApplicationController
     @story.description  = params[:description]
     @story.points       = params[:points]
     @story.assignee_id  = params[:assignee_id]
+    @story.status_id    = params[:status_id]
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
