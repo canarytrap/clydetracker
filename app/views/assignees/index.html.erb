@@ -1,0 +1,20 @@
+<h1>Listing assignees</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+  </tr>
+
+<% @assignees.each do |assignee| %>
+  <tr>
+    <td><%=h assignee.user_id %></td>
+    <td><%= link_to 'Show', assignee %></td>
+    <td><%= link_to 'Edit', edit_assignee_path(assignee) %></td>
+    <td><%= link_to 'Destroy', assignee, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New assignee', new_assignee_path %>

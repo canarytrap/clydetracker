@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @story_type.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @story_type.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_story_type_path(@story_type) %> |
+<%= link_to 'Back', story_types_path %>
