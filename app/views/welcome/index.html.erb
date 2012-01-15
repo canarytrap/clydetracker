@@ -25,8 +25,25 @@
     width:800px;
     font-size:18px;
 }
- 
+.icebox_story_details {
+    text-align:left;
+    background-color:yellow;
+    display:none;
+}
 </style>
+
+<script type="text/javascript" charset="utf-8">
+function toggle_story_details(div_id)
+{
+    target = document.getElementById(div_id);
+
+    if (target.style.display == '')
+        target.style.display = 'block';
+    else
+        target.style.display = '';
+    end    
+}
+</script>
 <div align="center">
     <div id="new_story">
         <h2>What needs to get done?</h2>
@@ -41,9 +58,9 @@
 
 <div id="icebox">
     <h2>Icebox</h2>        
-    <% @stories.each do |story| %>
+    <% @stories.each_with_index do |story, i| %>
         <% if story.section_id == 1 %>
-            <div class="story">                
+            <div class="story" id="icebox_story_<%= i %>">
                 <% if story.story_type_id == 1 %>
                     <img src="images/Book-icon.png" border="0" width="20">
                 <% elsif story.story_type_id == 2 %>
@@ -52,7 +69,14 @@
                     <img src="images/bug-icon.gif" border="0" width="20">
                 <% end %>
                 <i><%= story.title %></i>
+                <span style="float:right; cursor:pointer;" onclick="toggle_story_details('icebox_story_details_<%= i %>')">+</span>
             </div>
-        <% end %>    
-    <% end %>    
+
+            <!-- hidden div with details -->
+            <div class="icebox_story_details" id="icebox_story_details_<%= i %>">
+                details here for <%= story.title %>
+            </div>
+
+        <% end %>  
+    <% end %>
 </div>
