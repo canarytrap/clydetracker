@@ -92,6 +92,7 @@ class StoriesController < ApplicationController
     @story.assignee_id  = params[:assignee_id]
     @story.status_id    = params[:status_id]
     @story.story_type_id = params[:story_type_id]
+    @story.section_id   = params[:section_id]
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
