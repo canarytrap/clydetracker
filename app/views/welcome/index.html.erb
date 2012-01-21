@@ -9,9 +9,11 @@
     </div>
     
     <div id="quick_stats">
-        <strong>Quick Look</strong>
+        <strong>This Sprint..</strong>
         <br /><br />
-        <strong>Points left</strong>:&nbsp;<%= total_points(@stories_current) %>
+        <strong>Points Left</strong>:&nbsp;<%= total_points(@stories_current) %>
+        <br />
+        <strong>Blocked Items</strong>:&nbsp;<%= total_blocked(@stories_current) %>
     </div>
 </div>
 

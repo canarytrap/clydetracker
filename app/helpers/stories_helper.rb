@@ -21,12 +21,22 @@ module StoriesHelper
     end
   end
   
-  # TODO: use inject enumerator
+  # TODO: use inject enumerator on below methods
   def total_points stories
     sum = 0
     stories.each do |story| 
       if !story.points.nil?
         sum += story.points
+      end  
+    end
+    return sum
+  end
+  
+  def total_blocked stories
+    sum = 0
+    stories.each do |story| 
+      if story.status_id == 3
+        sum += 1
       end  
     end
     return sum
