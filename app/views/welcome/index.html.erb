@@ -1,14 +1,14 @@
 <style type="text/css" media="screen">
-#icebox {
-    background-color:#99FFFF;
+.stories_container {
+    background-color:#006699;
     width:400px;
     float:left;
     color:#282828;
     padding:5px;
     margin:5px;
 }
-#backlog {
-    background-color:#99FFFF;
+.stories_container_green {
+    background-color:#99FF00;
     width:400px;
     float:left;
     color:#282828;
@@ -23,7 +23,7 @@
     text-align:left;
 }
 #new_story {
-    background-color:#99FFFF;
+    background-color:#006699;
     width:900px;
     clear:both;
     height:110px;
@@ -56,7 +56,7 @@ function toggle_story_details(div_id)
 </script>
 <div align="center">
     <div id="new_story">
-        <h2>What needs to get done?</h2>
+        <h2><span style="color:white;">What needs to get done?</span></h2>
         <% form_tag("/stories", :method => "post") do %>
             <input class="new_story_input" type="text" name="title">&nbsp;
             <%= submit_tag("Save") %>
@@ -66,12 +66,17 @@ function toggle_story_details(div_id)
 
 <p><br />
 
-<div id="backlog">
-    <h2>Backlog</h2>
+<div class="stories_container_green">
+    <h2>Current Sprint</h2>
+    <%= render(:partial => "story", :collection => @stories_current) %>
+</div>
+
+<div class="stories_container">
+    <h2><span style="color:white;">Backlog</span></h2>
     <%= render(:partial => "story", :collection => @stories_backlog) %>
 </div>
 
-<div id="icebox">
-    <h2>Icebox</h2>
+<div class="stories_container">
+    <h2><span style="color:white;">Icebox</span></h2>
     <%= render(:partial => "story", :collection => @stories_icebox) %>
 </div>
