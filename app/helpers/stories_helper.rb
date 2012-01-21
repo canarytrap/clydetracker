@@ -17,7 +17,7 @@ module StoriesHelper
     when 3
       return 'style="background-color:#FF6A6A;"'
     when 8
-      return 'style="background-color:#008B45;"'
+      return 'style="background-color:#90EE90;"'
     end
   end
   
@@ -52,7 +52,7 @@ module StoriesHelper
     return sum
   end
   
-  def format_title story
-    return (story.title.length > 40) ? story.title[0..40] + '..' : story.title
+  def format_title story, length
+    return (story.title.length > length) ? story.title[0..length] + '..' : story.title
   end
 end

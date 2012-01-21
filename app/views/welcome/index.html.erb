@@ -9,9 +9,8 @@
     </div>
     
     <div id="quick_stats">
-        <strong>This Sprint..</strong>
-        <br /><br />
-        <strong>Points Left</strong>:&nbsp;<%= total_points(@stories_current) %>
+        <strong style="font-size:16px;">This Sprint..</strong>
+        <span style="float:right;"><strong>Points Left</strong>:&nbsp;<%= total_points(@stories_current) %></span>
         <br /><br />
         <strong>Blocked Items</strong>:&nbsp;<span style="color:red;"><%= total_blocked(@stories_current) %></span>
         <br />
@@ -21,11 +20,16 @@
 
 <p><br />
 
-<div class="stories_container_green">
-    <h2>Current Sprint</h2>
-    <strong style="font-size:18px;"><%= total_points(@stories_current) %></strong>&nbsp;points
+<div class="stories_container_current_sprint">
+    <br />
+    <strong style="font-size:22px; padding:6px;">Current Sprint</strong>
+    <span style="float:right;">
+        <strong style="font-size:18px;"><%= total_points(@stories_current) %></strong>&nbsp;points
+        &nbsp;
+    </span>    
     <br /><br />
-    <%= render(:partial => "story", :collection => @stories_current) %>
+    <%= render(:partial => "story_current_sprint", :collection => @stories_current) %>
+    <div style="clear:both;">&nbsp;</div>
 </div>
 
 <div class="stories_container">

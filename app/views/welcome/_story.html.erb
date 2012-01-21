@@ -1,7 +1,7 @@
 
 <div class="story" id="story_<%= story.id %>" <%= story_color(story) %> onclick="toggle_div('story_details_<%= story.id %>')">
     <%= story_icon(story) %>
-    <i><%= format_title(story) %></i>
+    <%= format_title(story, 40) %>
     <span style="float:right; padding:4px;"><strong><%= story.points %></strong></span>
 </div>
 

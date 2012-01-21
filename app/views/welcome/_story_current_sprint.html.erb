@@ -1,0 +1,57 @@
+
+<div class="story_current_sprint" id="story_<%= story_current_sprint.id %>" <%= story_color(story_current_sprint) %> onclick="toggle_div('story_details_<%= story_current_sprint.id %>')">
+    <%= story_icon(story_current_sprint) %>
+    <%= format_title(story_current_sprint, 94) %>
+    <span style="float:right; padding:4px;"><strong><%= story_current_sprint.points %></strong></span>
+</div>
+
+<div class="story_details" id="story_details_<%= story_current_sprint.id %>">  
+    <% form_for(story_current_sprint) do |f| %>
+        Title:<br />
+        <input type="text" name="title" value="<%= story_current_sprint.title %>" size="60">
+        <br /><br />
+        
+        Description:<br />
+        <textarea name="description" cols="45" rows="5"><%= story_current_sprint.description %></textarea>
+        <br /><br />
+
+        Status:               
+        <select name="status_id">
+        <% @statuses.each do |status| %>
+            <option value="<%= status.id %>" <%= story_current_sprint.status_id == status.id ? "selected" : "" %>><%= status.name %></option>
+        <% end %>
+        </select>
+        <br /><br />
+
+        Assignee:
+        <select name="assignee_id">
+        <option value="">--none--</option>
+        <% @users.each do |user| %>
+            <option value="<%= user.id %>" <%= story_current_sprint.assignee_id == user.id ? "selected" : "" %>><%= user.name %></option>
+        <% end %>
+        </select>
+        <br /><br />
+        
+        Type:
+        <select name="story_type_id">
+        <% @story_types.each do |story_type| %>
+            <option value="<%= story_type.id %>" <%= story_current_sprint.story_type_id == story_type.id ? "selected" : "" %>><%= story_type.name %></option>
+        <% end %>
+        </select>
+        <br /><br />
+        
+        Move To:
+        <select name="section_id">
+        <% @sections.each do |section| %>
+            <option value="<%= section.id %>" <%= story_current_sprint.section_id == section.id ? "selected" : "" %>><%= section.name %></option>
+        <% end %>
+        </select>
+        <br /><br />
+        
+        Points:&nbsp;
+        <input type="text" name="points" value="<%= story_current_sprint.points %>" size="4">
+        <br /><br />
+        
+        <%= f.submit 'Update' %>
+    <% end %>                
+</div>
