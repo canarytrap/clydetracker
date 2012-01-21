@@ -1,0 +1,41 @@
+.stories_container {
+    background-color:#006699;
+    width:400px;
+    float:left;
+    color:#282828;
+    padding:5px;
+    margin:5px;
+}
+.stories_container_green {
+    background-color:#99FF00;
+    width:400px;
+    float:left;
+    color:#282828;
+    padding:5px;
+    margin:5px;
+}
+.story {
+    background-color:#ffffff;
+    width:390px;
+    padding:4px;
+    margin:2px;
+    text-align:left;
+}
+#new_story {
+    background-color:#006699;
+    width:900px;
+    clear:both;
+    height:110px;
+    padding:4px;    
+}
+.new_story_input {
+    height:40px;
+    width:800px;
+    font-size:18px;
+}
+.story_details {
+    text-align:left;
+    background-color:yellow;
+    display:none;
+    padding:5px;
+}
