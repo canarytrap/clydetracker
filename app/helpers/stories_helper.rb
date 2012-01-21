@@ -51,4 +51,8 @@ module StoriesHelper
     end
     return sum
   end
+  
+  def format_title story
+    return (story.title.length > 40) ? story.title[0..40] + '..' : story.title
+  end
 end
