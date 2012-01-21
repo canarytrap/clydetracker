@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    # TODO: get only icebox stories
-    @stories          = Story.find :all, :order => "id DESC"
+    @stories_icebox   = Story.find_all_by_section_id(1, :order => "id DESC")
     @stories_backlog  = Story.find_all_by_section_id(2, :order => "id DESC")
 
     @users            = User.find :all, :order => "name"
