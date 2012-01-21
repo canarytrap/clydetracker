@@ -24,9 +24,19 @@
 #new_story {
     background-color:#006699;
     width:900px;
-    clear:both;
     height:110px;
-    padding:4px;    
+    padding:4px;
+		margin:6px;
+		float:left;
+}
+#quick_stats {
+    background-color:#B8B8B8;
+    width:320px;
+    height:110px;
+    padding:4px;
+		margin:6px;
+    float:left;
+		text-align:left;
 }
 .new_story_input {
     height:40px;
