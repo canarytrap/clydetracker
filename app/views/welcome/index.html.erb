@@ -74,75 +74,7 @@ function toggle_story_details(div_id)
 
 <div id="backlog">
     <h2>Backlog</h2>
-    <% @stories.each_with_index do |story, i| %>
-        <% if story.section_id == 2 %>
-            <div class="story" id="backlog_story_<%= i %>">
-                <% if story.story_type_id == 1 %>
-                    <img src="images/Book-icon.png" border="0" width="20">
-                <% elsif story.story_type_id == 2 %>
-                    <img src="images/tool.png" border="0" width="20">
-                <% elsif story.story_type_id == 3 %>
-                    <img src="images/bug-icon.gif" border="0" width="20">
-                <% end %>
-                <i><%= story.title %></i>                
-                <span style="float:right; cursor:pointer; padding:0px 0px 0px 10px;" onclick="toggle_story_details('backlog_story_details_<%= i %>')">+</span>
-                <span style="float:right;"><%= story.points %></span>
-            </div>
-            
-            <!-- TODO: use a partial. this is duplicate code!! -->
-            <div class="story_details" id="backlog_story_details_<%= i %>">  
-                <% form_for(story) do |f| %>
-                    Title:<br />
-                    <input type="text" name="title" value="<%= story.title %>" size="60">
-                    <br /><br />
-                    
-                    Description:<br />
-                    <textarea name="description" cols="45" rows="5"><%= story.description %></textarea>
-                    <br /><br />
-
-                    Status:               
-                    <select name="status_id">
-                    <% @statuses.each do |status| %>
-                        <option value="<%= status.id %>" <%= story.status_id == status.id ? "selected" : "" %>><%= status.name %></option>
-                    <% end %>
-                    </select>
-                    <br /><br />
-
-                    Assignee:
-                    <select name="assignee_id">
-                    <option value="">--none--</option>
-                    <% @users.each do |user| %>
-                        <option value="<%= user.id %>" <%= story.assignee_id == user.id ? "selected" : "" %>><%= user.name %></option>
-                    <% end %>
-                    </select>
-                    <br /><br />
-                    
-                    Type:
-                    <select name="story_type_id">
-                    <% @story_types.each do |story_type| %>
-                        <option value="<%= story_type.id %>" <%= story.story_type_id == story_type.id ? "selected" : "" %>><%= story_type.name %></option>
-                    <% end %>
-                    </select>
-                    <br /><br />
-                    
-                    Move To:
-                    <select name="section_id">
-                    <% @sections.each do |section| %>
-                        <option value="<%= section.id %>" <%= story.section_id == section.id ? "selected" : "" %>><%= section.name %></option>
-                    <% end %>
-                    </select>
-                    <br /><br />
-                    
-                    Points:&nbsp;
-                    <input type="text" name="points" value="<%= story.points %>" size="4">
-                    <br /><br />
-                    
-                    <%= f.submit 'Update' %>
-                <% end %>                
-            </div>
-
-        <% end %>
-    <% end %>
+    <%= render(:partial => "story", :collection => @stories_backlog) %>
 </div>
 
 <div id="icebox">
