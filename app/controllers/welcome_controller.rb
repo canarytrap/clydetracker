@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
     @stories_backlog  = Story.find_all_by_section_id(2, :order => "id DESC")
     @stories_current  = Story.find_all_by_section_id(3, :order => "id DESC")
 
+    # for select boxes
     @users            = User.find :all, :order => "name"
     @statuses         = Status.find :all, :order => "id ASC"
     @story_types      = StoryType.find :all, :order => "name ASC"
