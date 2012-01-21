@@ -15,6 +15,7 @@
     margin:5px;
 }
 .story {
+		cursor:pointer;
     background-color:#ffffff;
     width:390px;
     padding:4px;

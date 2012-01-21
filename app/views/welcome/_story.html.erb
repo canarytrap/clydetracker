@@ -1,9 +1,8 @@
 
-<div class="story" id="story_<%= story.id %>" <%= story_color(story) %>>
+<div class="story" id="story_<%= story.id %>" <%= story_color(story) %> onclick="toggle_div('story_details_<%= story.id %>')">
     <%= story_icon(story) %>
     <i><%= story.title %></i>
-    <span style="float:right; cursor:pointer; padding:0px 0px 0px 10px;" onclick="toggle_div('story_details_<%= story.id %>')">+</span>
-    <span style="float:right;"><strong><%= story.points %></strong></span>
+    <span style="float:right; padding:4px;"><strong><%= story.points %></strong></span>
 </div>
 
 <div class="story_details" id="story_details_<%= story.id %>">  
