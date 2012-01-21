@@ -20,4 +20,15 @@ module StoriesHelper
       return 'style="background-color:green;"'
     end
   end
+  
+  # TODO: use inject enumerator
+  def total_points stories
+    sum = 0
+    stories.each do |story| 
+      if !story.points.nil?
+        sum += story.points
+      end  
+    end
+    return sum
+  end
 end

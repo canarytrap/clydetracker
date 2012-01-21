@@ -13,6 +13,8 @@
 
 <div class="stories_container_green">
     <h2>Current Sprint</h2>
+    <strong style="font-size:18px;"><%= total_points(@stories_current) %></strong>&nbsp;points
+    <br /><br />
     <%= render(:partial => "story", :collection => @stories_current) %>
 </div>
 
