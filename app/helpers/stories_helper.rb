@@ -13,11 +13,11 @@ module StoriesHelper
   def story_color story
     case story.status_id
     when 2
-      return 'style="background-color:yellow;"'
+      return 'style="background-color:#FFF68F;"'
     when 3
-      return 'style="background-color:red;"'
+      return 'style="background-color:#FF6A6A;"'
     when 8
-      return 'style="background-color:green;"'
+      return 'style="background-color:#008B45;"'
     end
   end
   
