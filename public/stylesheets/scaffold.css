@@ -7,6 +7,8 @@ body, p, ol, ul, td {
 	margin:				4px;
 }
 
+h2, h3, h1 { font-weight:normal; }
+
 pre {
   background-color: #eee;
   padding: 10px;
