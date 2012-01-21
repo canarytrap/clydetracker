@@ -1,5 +1,5 @@
 
-<div class="story" id="backlog_story_<%= story.id %>">
+<div class="story" id="story_<%= story.id %>">
     <!-- TODO: refactor this -->
     <% if story.story_type_id == 1 %>
         <img src="images/Book-icon.png" border="0" width="20">
@@ -9,12 +9,12 @@
         <img src="images/bug-icon.gif" border="0" width="20">
     <% end %>
     <i><%= story.title %></i>                
-    <span style="float:right; cursor:pointer; padding:0px 0px 0px 10px;" onclick="toggle_story_details('backlog_story_details_<%= story.id %>')">+</span>
+    <span style="float:right; cursor:pointer; padding:0px 0px 0px 10px;" onclick="toggle_story_details('story_details_<%= story.id %>')">+</span>
     <span style="float:right;"><%= story.points %></span>
 </div>
 
 <!-- TODO: use a partial. this is duplicate code!! -->
-<div class="story_details" id="backlog_story_details_<%= story.id %>">  
+<div class="story_details" id="story_details_<%= story.id %>">  
     <% form_for(story) do |f| %>
         Title:<br />
         <input type="text" name="title" value="<%= story.title %>" size="60">
