@@ -12,8 +12,10 @@
         <strong>This Sprint..</strong>
         <br /><br />
         <strong>Points Left</strong>:&nbsp;<%= total_points(@stories_current) %>
+        <br /><br />
+        <strong>Blocked Items</strong>:&nbsp;<span style="color:red;"><%= total_blocked(@stories_current) %></span>
         <br />
-        <strong>Blocked Items</strong>:&nbsp;<%= total_blocked(@stories_current) %>
+        <strong>Ready For QA</strong>:&nbsp;<span style="color:green;"><%= total_ready_for_qa(@stories_current) %></span>
     </div>
 </div>
 

@@ -41,4 +41,14 @@ module StoriesHelper
     end
     return sum
   end
+  
+  def total_ready_for_qa stories
+    sum = 0
+    stories.each do |story| 
+      if story.status_id == 8
+        sum += 1
+      end  
+    end
+    return sum
+  end
 end
