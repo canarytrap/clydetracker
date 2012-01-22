@@ -34,15 +34,13 @@ module StoriesHelper
     return sum
   end
 
-  # TODO: refactor this!
   def total_points_left stories
+    # TODO: refactor this
+    unfinished_status = [1, 2, 3, 8]
     sum = 0
     stories.each do |story|
       if !story.points.nil?
-        if story.status_id == 1 or
-          story.status_id == 2 or
-          story.status_id == 3 or
-          story.status_id == 8
+        if unfinished_status.include? story.status_id
             sum += story.points
         end  
       end
