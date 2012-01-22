@@ -2,12 +2,12 @@ body { background-color: #E5E5E5; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
+  font-size:   12px;
   line-height: 18px;
-	margin:				4px;
+	margin:				0px;
 }
 
-h2, h3, h1 { font-weight:normal; }
+h2, h3, h1 { font-weight:normal; margin:7px; }
 
 pre {
   background-color: #eee;

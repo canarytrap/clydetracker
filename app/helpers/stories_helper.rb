@@ -2,11 +2,11 @@ module StoriesHelper
 
   def story_icon story
     if story.story_type_id == 2
-      '<img src="images/tool.png" border="0" width="20">'
+      '<img src="images/tool.png" border="0" width="16">'
     elsif story.story_type_id == 3
-      '<img src="images/bug.png" border="0" width="20">'
+      '<img src="images/bug.png" border="0" width="16">'
     else
-      '<img src="images/Book-icon.png" border="0" width="20">'
+      '<img src="images/Book-icon.png" border="0" width="16">'
     end
   end
 

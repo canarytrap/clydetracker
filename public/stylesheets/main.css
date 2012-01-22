@@ -1,6 +1,6 @@
 #topmost_bar {
 	background-color:#363636;
-	height:26px;
+	height:22px;
 	padding:5px;
 	text-align:left;
 	color:white;
@@ -12,7 +12,7 @@
     float:left;
     color:#282828;
     padding:2px;
-    margin:3px;
+    margin:0px;
 }
 .stories_container_current_sprint {
     background-color:#ffffff;
@@ -21,42 +21,44 @@
     float:left;
     color:#282828;
     padding:2px;
-    margin:3px;
+    margin:0px;
 		text-align:left;
 }
 .story {
 		cursor:pointer;
     background-color:#EBEBEB;
-    width:340px;
+    width:98%;
+		height:18px;
     padding:4px;
     margin:2px;
+		font-size:11px;
     text-align:left;
 }
 .story_current_sprint {
 		cursor:pointer;
     background-color:#EBEBEB;
     width:99%;
-		height:40px;
+		height:32px;
     padding:4px;
     margin:2px;
     text-align:left;
-		font-size:16px;
+		font-size:14px;
 }
 #new_story {
     background-color:#006699;
-    width:870px;
+    width:872px;
     height:110px;
     padding:2px 2px 2px 10px;
-		margin:3px;
+		margin:0px;
 		float:left;
 		text-align:left;
 }
 #quick_stats {
     background-color:#ffffff;
-    width:340px;
+    width:343px;
     height:100px;
     padding:6px;
-		margin:3px;
+		margin:0px;
     float:left;
 		text-align:left;
 }
@@ -67,7 +69,8 @@
 }
 .story_details {
     text-align:left;
-    background-color:#EEE9E9;
+    background-color:#C2C2C2;
     display:none;
-    padding:5px;
+		margin:1px;
+    padding:3px;
 }
