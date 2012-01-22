@@ -16,6 +16,8 @@ module StoriesHelper
       return 'style="background-color:#FFF68F;"'
     when 3
       return 'style="background-color:#FF6A6A;"'
+    when 4
+      return 'style="background-color:#43CD80;"'      
     when 8
       return 'style="background-color:#90EE90;"'
     end
