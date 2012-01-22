@@ -33,6 +33,22 @@ module StoriesHelper
     end
     return sum
   end
+
+  # TODO: refactor this!
+  def total_points_left stories
+    sum = 0
+    stories.each do |story|
+      if !story.points.nil?
+        if story.status_id == 1 or
+          story.status_id == 2 or
+          story.status_id == 3 or
+          story.status_id == 8
+            sum += story.points
+        end  
+      end
+    end
+    return sum
+  end
   
   def total_blocked stories
     sum = 0
