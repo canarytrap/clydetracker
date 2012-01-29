@@ -26,6 +26,10 @@
 <div class="stories_container_current_sprint">
     <br />
     <strong style="font-size:22px; padding:6px;">Current Sprint</strong>
+    <span style="padding-left:30px; color:green;"><strong>
+        <%= format_date(@current_sprint.start_date) %> 
+        thru <%= format_date(@current_sprint.end_date) %></strong>
+    </span>
     <span style="float:right;">
         <strong style="font-size:18px;"><%= total_points(@stories_current) %></strong>&nbsp;points
         &nbsp;
