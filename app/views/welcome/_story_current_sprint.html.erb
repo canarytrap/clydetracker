@@ -8,11 +8,11 @@
 <div class="story_details" id="story_details_<%= story_current_sprint.id %>">  
     <% form_for(story_current_sprint) do |f| %>
         Title:<br />
-        <input type="text" name="title" value="<%= story_current_sprint.title %>" size="60">
+        <input type="text" name="title" value="<%= story_current_sprint.title %>" size="100">
         <br /><br />
         
         Description:<br />
-        <textarea name="description" cols="45" rows="5"><%= story_current_sprint.description %></textarea>
+        <textarea name="description" cols="95" rows="15"><%= story_current_sprint.description %></textarea>
         <br /><br />
 
         Status:               
