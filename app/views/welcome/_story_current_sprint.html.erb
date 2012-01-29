@@ -53,5 +53,10 @@
         <br /><br />
         
         <%= f.submit 'Update' %>
-    <% end %>                
+    <% end %>
+    
+    <br />
+    <% form_tag(story_path(story_current_sprint.id), :method => 'delete', :onclick => "return confirm('Are you sure?')") do %>
+        <%= submit_tag "Delete" %>
+    <% end %>             
 </div>

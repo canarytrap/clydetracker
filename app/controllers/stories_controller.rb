@@ -117,7 +117,7 @@ class StoriesController < ApplicationController
     flash[:notice] = 'Story has been deleted.'
     
     respond_to do |format|
-      format.html { redirect_to(stories_url) }
+      format.html { redirect_to(root_url) }
       format.xml  { head :ok }
     end
   end
