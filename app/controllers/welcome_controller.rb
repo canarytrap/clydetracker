@@ -1,9 +1,9 @@
 class WelcomeController < ApplicationController
   def index
     @stories_icebox   = Story.find_all_by_section_id(1, :order => "id DESC")
-    @stories_backlog  = Story.find_all_by_section_id(2, :order => "id DESC")    
-    @stories_current  = Story.find_all_by_section_id(3, :order => "id DESC")
+    @stories_backlog  = Story.find_all_by_section_id(2, :order => "id DESC")
     @current_sprint   = Section.current_sprint.first
+    @stories_current  = Story.find_all_by_section_id(@current_sprint, :order => "id DESC")
 
     # for select boxes
     @users            = User.find :all, :order => "name"
