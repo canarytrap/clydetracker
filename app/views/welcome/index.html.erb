@@ -37,6 +37,17 @@
     <br /><br />
     <%= render(:partial => "story_current_sprint", :collection => @stories_current) %>
     <div style="clear:both;">&nbsp;</div>
+    
+    <!-- past sprints -->
+    <div class="stories_container_previous_sprint">
+        <br />
+        <strong style="font-size:22px; padding:6px;">Previous Sprint</strong>
+        <span style="padding-left:30px; color:green;"><strong>
+            <%= format_date(@previous_sprint.start_date) %> 
+            thru <%= format_date(@previous_sprint.end_date) %></strong>
+        </span>
+        <%= render(:partial => "story_current_sprint", :collection => @stories_previous) %>
+    </div>
 </div>
 
 <div class="stories_container">

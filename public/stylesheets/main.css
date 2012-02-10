@@ -24,6 +24,16 @@
     margin:0px;
 		text-align:left;
 }
+.stories_container_previous_sprint {
+    background-color:#ffffff;
+    width:100%;
+		height:400px;
+    float:left;
+    color:#282828;
+    padding:2px;
+    margin:0px;
+		text-align:left;
+}
 .story {
 		cursor:pointer;
     background-color:#EBEBEB;
