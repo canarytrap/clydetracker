@@ -1,10 +1,5 @@
 class Section < ActiveRecord::Base
   
-  # TODO: add current sprint to this array (pull this from db)
-  # icebox and backlogs
-  SELECT_BOX_SPRINTS = [{'id' => 1, 'name' => 'Icebox'},
-                        {'id' => 2, 'name' => 'Backlog'}]
-  
   def self.current_sprint
     find(:all, :conditions => "end_date >= curdate()", 
           :order => "end_date asc", 
@@ -16,4 +11,9 @@ class Section < ActiveRecord::Base
           :order => "end_date desc", 
           :limit => 1)
   end
+
+  # icebox and backlogs
+  SELECT_BOX_SPRINTS = [{'id' => 1, 'name' => 'Icebox'},
+                        {'id' => 2, 'name' => 'Backlog'},
+                        {'id' => self.current_sprint.first.id, 'name' => 'Current'}]
 end
