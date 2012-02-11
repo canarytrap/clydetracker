@@ -43,7 +43,7 @@
         Move To:
         <select name="section_id">
         <% @sections.each do |section| %>
-            <option value="<%= section.id %>" <%= story.section_id == section.id ? "selected" : "" %>><%= section.name %></option>
+            <option value="<%= section['id'] %>" <%= story.section_id == section['id'] ? "selected" : "" %>><%= section['name'] %></option>
         <% end %>
         </select>
         <br /><br />

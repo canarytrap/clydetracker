@@ -14,6 +14,6 @@ class WelcomeController < ApplicationController
     @users            = User.find :all, :order => "name"
     @statuses         = Status.find :all, :order => "id ASC"
     @story_types      = StoryType.find :all, :order => "name ASC"
-    @sections         = Section.find :all, :order => "name ASC"
+    @sections         = Section::SELECT_BOX_SPRINTS
   end
 end
