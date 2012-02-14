@@ -13,11 +13,14 @@
     
     <div id="quick_stats">
         <strong style="font-size:16px;">This Sprint..</strong>
-        <span style="float:right;"><strong>Points Left</strong>:&nbsp;<%= total_points_left(@stories_current) %></span>
+        <span style="float:right;"><strong>Points Left</strong>:&nbsp;
+            <%= total_points_left(@stories_current) %></span>
         <br /><br />
-        <strong>Blocked Items</strong>:&nbsp;<span style="color:red;"><%= total_blocked(@stories_current) %></span>
+        <strong>Blocked Items</strong>:&nbsp;
+        <span style="color:red;"><%= total_blocked(@stories_current) %></span>
         <br />
-        <strong>Ready For QA</strong>:&nbsp;<span style="color:green;"><%= total_ready_for_qa(@stories_current) %></span>
+        <strong>Ready For QA</strong>:&nbsp;
+        <span style="color:green;"><%= total_ready_for_qa(@stories_current) %></span>
     </div>
 </div>
 
@@ -27,12 +30,14 @@
     <br />
     <strong style="font-size:22px; padding:6px;">Current Sprint</strong>
     <span style="padding-left:30px; color:green;"><strong>
-        <%= format_date(@current_sprint.start_date) %> 
-        thru <%= format_date(@current_sprint.end_date) %></strong>
-    </span>
+            <%= format_date(@current_sprint.start_date) %>
+            thru 
+            <%= format_date(@current_sprint.end_date) %>
+    </strong></span>
     <span style="float:right;">
-        <strong style="font-size:18px;"><%= total_points(@stories_current) %></strong>&nbsp;points
-        &nbsp;
+        <strong style="font-size:18px;">
+            <%= total_points(@stories_current) %>
+        </strong>&nbsp;points&nbsp;
     </span>    
     <br /><br />
     <%= render(:partial => "story_current_sprint", :collection => @stories_current) %>
