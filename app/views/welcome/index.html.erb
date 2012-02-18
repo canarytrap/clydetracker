@@ -28,17 +28,30 @@
 
 <div class="stories_container_current_sprint">
     <br />
-    <strong style="font-size:22px; padding:6px;">Current Sprint</strong>
-    <span style="padding-left:30px; color:green;"><strong>
-            <%= format_date(@current_sprint.start_date) %>
-            thru 
-            <%= format_date(@current_sprint.end_date) %>
-    </strong></span>
-    <span style="float:right;">
-        <strong style="font-size:18px;">
-            <%= total_points(@stories_current) %>
-        </strong>&nbsp;points&nbsp;
-    </span>    
+    <div onclick="toggle_div('current_sprint_details');" style="cursor:pointer; height:10px;">
+        <strong style="font-size:22px; padding:6px;">
+            Current Sprint
+        </strong>
+        <span style="padding-left:30px; color:green;"><strong>
+                <%= format_date(@current_sprint.start_date) %>
+                thru 
+                <%= format_date(@current_sprint.end_date) %>
+        </strong></span>
+        <span style="float:right;">
+            <strong style="font-size:18px;">
+                <%= total_points(@stories_current) %>
+            </strong>&nbsp;points&nbsp;
+        </span>
+    </div>    
+
+    <!-- hidden div for current sprint options -->
+    <!-- TODO: make this a partial -->
+    <div id="current_sprint_details">
+        Start Date: <input type="text" name="start_date" size="6">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        End Date: <input type="text" name="end_date" size="6">
+    </div>
+    
     <br /><br />
     <%= render(:partial => "story_current_sprint", :collection => @stories_current) %>
     <div style="clear:both;">&nbsp;</div>
@@ -52,7 +65,7 @@
             thru <%= format_date(@previous_sprint.end_date) %></strong>
         </span>
         <%= render(:partial => "story_current_sprint", :collection => @stories_previous) %>
-    </div>
+    </div>    
 </div>
 
 <div class="stories_container">
