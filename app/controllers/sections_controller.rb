@@ -59,10 +59,18 @@ class SectionsController < ApplicationController
   def update
     @section = Section.find(params[:id])
 
+    # TODO: move both these validations to model    
+    current_sprint_start  = DateTime.strptime(params[:start_date], "%Y-%m-%d");
+    current_sprint_end    = DateTime.strptime(params[:end_date], "%Y-%m-%d");
+    last_sprint_end       = DateTime.strptime(Section.previous_sprint.end_date.to_s, "%Y-%m-%d");
+
+    # end_date must be at least 5 days greater than start_date
+    if current_sprint_end < (current_sprint_start + 5)
+      flash[:notice] = 'Sprint must be at least 5 days long.'
+      return redirect_to root_url
+    end
+
     # start_date cannot be earlier than last sprints end date
-    # TODO: move to model
-    current_sprint_start  = DateTime.strptime(params[:start_date], "%Y-%m-%d").to_time;
-    last_sprint_end       = DateTime.strptime(Section.previous_sprint.end_date.to_s, "%Y-%m-%d").to_time;
     if current_sprint_start <= last_sprint_end
       flash[:notice] = 'Start Date cannot overlap with the previous sprint.'
       return redirect_to root_url
@@ -74,7 +82,7 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.update_attributes(params[:section])
-        flash[:notice] = 'Section was successfully updated.'
+        flash[:notice] = 'Sprint was successfully updated.'
         format.html { redirect_to root_url }
         format.xml  { head :ok }
       else
