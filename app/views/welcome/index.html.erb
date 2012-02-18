@@ -1,8 +1,8 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	$("#from_date").datepicker({ dateFormat: 'yy-mm-dd' });
-	$("#to_date").datepicker({ dateFormat: 'yy-mm-dd' });
+	$("#start_date").datepicker({ dateFormat: 'yy-mm-dd' });
+	$("#end_date").datepicker({ dateFormat: 'yy-mm-dd' });
 });
 </script>
 
@@ -54,9 +54,9 @@ $(document).ready(function() {
     <!-- hidden div for current sprint options -->
     <!-- TODO: make this a partial -->
     <div id="current_sprint_details">
-        Start Date: <input type="text" name="from_date" id="from_date" size="12" maxlength="12">
+        Start Date: <input type="text" name="start_date" id="start_date" size="12" maxlength="12" value="<%= format_date(@current_sprint.start_date) %>">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        End Date: <input type="text" name="to_date" id="to_date" size="12" maxlength="12">
+        End Date: <input type="text" name="end_date" id="end_date" size="12" maxlength="12" value="<%= format_date(@current_sprint.end_date) %>">
     </div>
     
     <br /><br />
