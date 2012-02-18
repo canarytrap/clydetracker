@@ -59,10 +59,14 @@ class SectionsController < ApplicationController
   def update
     @section = Section.find(params[:id])
 
+    # set these as we are currently coming from welcome page
+    @section.start_date = params[:start_date]
+    @section.end_date   = params[:end_date]
+
     respond_to do |format|
       if @section.update_attributes(params[:section])
         flash[:notice] = 'Section was successfully updated.'
-        format.html { redirect_to(@section) }
+        format.html { redirect_to root_url }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

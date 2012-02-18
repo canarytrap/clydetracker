@@ -54,9 +54,13 @@ $(document).ready(function() {
     <!-- hidden div for current sprint options -->
     <!-- TODO: make this a partial -->
     <div id="current_sprint_details">
-        Start Date: <input type="text" name="start_date" id="start_date" size="12" maxlength="12" value="<%= format_date(@current_sprint.start_date) %>">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        End Date: <input type="text" name="end_date" id="end_date" size="12" maxlength="12" value="<%= format_date(@current_sprint.end_date) %>">
+        <% form_tag(section_path(@current_sprint.id), :method => 'PUT') do %>
+            Start Date: <input type="text" name="start_date" id="start_date" size="12" maxlength="10" value="<%= format_date(@current_sprint.start_date) %>">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            End Date: <input type="text" name="end_date" id="end_date" size="12" maxlength="10" value="<%= format_date(@current_sprint.end_date) %>">
+            <br /><br />
+            <%= submit_tag "Update" %>
+        <% end %>
     </div>
     
     <br /><br />
