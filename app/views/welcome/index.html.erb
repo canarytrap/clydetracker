@@ -75,6 +75,9 @@ $(document).ready(function() {
             <%= format_date(@previous_sprint.start_date) %> 
             thru <%= format_date(@previous_sprint.end_date) %></strong>
         </span>
+        <span style="float:right;">
+            <%= link_to "Past Sprints", sections_url %>&nbsp;&nbsp;
+        </span>
         <%= render(:partial => "story_current_sprint", :collection => @stories_previous) %>
     </div>    
 </div>

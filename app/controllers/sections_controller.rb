@@ -1,8 +1,11 @@
 class SectionsController < ApplicationController
+
+  layout "welcome"
+
   # GET /sections
   # GET /sections.xml
   def index
-    @sections = Section.all
+    @sections = Section.past_sprints
 
     respond_to do |format|
       format.html # index.html.erb

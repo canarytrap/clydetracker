@@ -1,22 +1,17 @@
-<h1>Listing sections</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
+<div style="float:left; padding:6px; font-size:22px;"><%= link_to 'Back', root_url %></div>
 
-<% @sections.each do |section| %>
-  <tr>
-    <td><%=h section.name %></td>
-    <td><%=h section.description %></td>
-    <td><%= link_to 'Show', section %></td>
-    <td><%= link_to 'Edit', edit_section_path(section) %></td>
-    <td><%= link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<strong style="font-size:22px; padding:6px;">Past Sprints</strong>
 
-<br />
-
-<%= link_to 'New section', new_section_path %>
+<div class="stories_container_previous_sprint">
+    <% @sections.each do |section| %>
+        <div class="story_current_sprint">
+            <strong style="font-size:22px; padding:6px;"><%=h section.name %></strong>
+            <%=h format_date(section.start_date) %>
+            <%=h format_date(section.end_date) %>
+        </div>
+    
+        <!-- TODO: get stories for each sprint for this partial -->
+        <%= render(:partial => "story_current_sprint", :collection => @stories) %>
+    <% end %>
+</div>
