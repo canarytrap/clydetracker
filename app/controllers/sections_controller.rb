@@ -6,6 +6,11 @@ class SectionsController < ApplicationController
   # GET /sections.xml
   def index
     @sections = Section.past_sprints
+    
+    # for select boxes
+    @users            = User.find :all, :order => "name"
+    @statuses         = Status.find :all, :order => "id ASC"
+    @story_types      = StoryType.find :all, :order => "name ASC"
 
     respond_to do |format|
       format.html # index.html.erb

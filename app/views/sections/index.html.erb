@@ -3,6 +3,7 @@
 
 <strong style="font-size:22px; padding:6px;">Past Sprints</strong>
 
+<!-- TODO: use partial -->
 <div class="stories_container_previous_sprint">
     <% @sections.each do |section| %>
         <div class="story_current_sprint">
@@ -10,8 +11,10 @@
             <%=h format_date(section.start_date) %>
             <%=h format_date(section.end_date) %>
         </div>
-    
+
         <!-- TODO: get stories for each sprint for this partial -->
-        <%= render(:partial => "story_current_sprint", :collection => @stories) %>
+        <% if section.stories %>
+            <%= render(:partial => "/welcome/story_current_sprint", :collection => section.stories) %>
+        <% end %>
     <% end %>
 </div>

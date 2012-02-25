@@ -1,4 +1,5 @@
 class Section < ActiveRecord::Base
+  has_many :stories
 
   # create a default current sprint if none exists
   def self.create_current_sprint
