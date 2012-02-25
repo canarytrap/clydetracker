@@ -19,15 +19,7 @@ $(document).ready(function() {
     </div>
     
     <div id="quick_stats">
-        <strong style="font-size:16px;">This Sprint..</strong>
-        <span style="float:right;"><strong>Points Left</strong>:&nbsp;
-            <%= total_points_left(@stories_current) %></span>
-        <br /><br />
-        <strong>Blocked Items</strong>:&nbsp;
-        <span style="color:red;"><%= total_blocked(@stories_current) %></span>
-        <br />
-        <strong>Ready For QA</strong>:&nbsp;
-        <span style="color:green;"><%= total_ready_for_qa(@stories_current) %></span>
+        <%= render(:partial => 'quick_stats', :object => @stories_current) %>
     </div>
 </div>
 
@@ -64,6 +56,8 @@ $(document).ready(function() {
     </div>
     
     <br /><br />
+
+    <!-- all stories in current sprint -->
     <%= render(:partial => "story_current_sprint", :collection => @stories_current) %>
     <div style="clear:both;">&nbsp;</div>
     
@@ -80,7 +74,10 @@ $(document).ready(function() {
                 <strong><%= total_points(@stories_previous) %></strong> points
             </span>
         </span>
+
+        <!-- all stories in previous sprint -->
         <%= render(:partial => "story_current_sprint", :collection => @stories_previous) %>
+        
         <span style="padding-left:6px; font-size:16px;"<%= link_to "Past Sprints", sections_url %></span>
     </div>    
 </div>
