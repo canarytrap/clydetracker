@@ -2,20 +2,6 @@
 <div style="float:left; padding:6px; font-size:22px;"><%= link_to 'Back', root_url %></div>
 
 <strong style="font-size:22px; padding:6px;">Past Sprints</strong>
-
-<!-- TODO: use partial -->
 <div class="stories_container_previous_sprint">
-    <% @sections.each do |section| %>
-        <div class="story_current_sprint">
-            <strong style="font-size:22px; padding:6px;"><%=h section.name %></strong>
-            <%=h format_date(section.start_date) %>
-            <%=h format_date(section.end_date) %>
-            <span style="float:right;"><strong><%= total_points(section.stories) %></strong> points</span>
-        </div>
-
-        <!-- TODO: get stories for each sprint for this partial -->
-        <% if section.stories %>
-            <%= render(:partial => "/welcome/story_current_sprint", :collection => section.stories) %>
-        <% end %>
-    <% end %>
+    <%= render(:partial => "section", :collection => @sections) %>
 </div>

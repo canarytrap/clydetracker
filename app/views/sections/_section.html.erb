@@ -1,0 +1,12 @@
+
+<div class="story_current_sprint">
+    <strong style="font-size:22px; padding:6px;"><%=h section.name %></strong>
+    <%=h format_date(section.start_date) %>
+    <%=h format_date(section.end_date) %>
+    <span style="float:right;"><strong><%= total_points(section.stories) %></strong> points</span>
+</div>
+
+<!-- all stories in this sprint -->
+<% if section.stories %>
+    <%= render(:partial => "/welcome/story_current_sprint", :collection => section.stories) %>
+<% end %>
