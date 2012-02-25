@@ -76,9 +76,12 @@ $(document).ready(function() {
             thru <%= format_date(@previous_sprint.end_date) %></strong>
         </span>
         <span style="float:right;">
-            <%= link_to "Past Sprints", sections_url %>&nbsp;&nbsp;
+            <span style="float:right; padding-right:6px;">
+                <strong><%= total_points(@stories_previous) %></strong> points
+            </span>
         </span>
         <%= render(:partial => "story_current_sprint", :collection => @stories_previous) %>
+        <span style="padding-left:6px; font-size:16px;"<%= link_to "Past Sprints", sections_url %></span>
     </div>    
 </div>
 
