@@ -36,6 +36,6 @@ class Section < ActiveRecord::Base
   # we dont want to display 'icebox' or 'backlogs'
   def self.past_sprints
     results = find(:all, :conditions => "id NOT IN (1, 2) AND end_date < curdate()", 
-                    :order => "end_date asc")
+                    :order => "end_date desc")
   end
 end
