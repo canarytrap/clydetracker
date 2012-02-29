@@ -1,0 +1,10 @@
+
+<div style="float:left; padding:6px; font-size:22px;"><%= link_to 'Back', root_url %></div>
+
+<strong style="font-size:22px; padding:6px;">Search Results for "<%= @search_string %>"</strong>
+
+<br /><br />
+
+<% if @stories %>
+    <%= render(:partial => "/welcome/story_current_sprint", :collection => @stories) %>
+<% end %>

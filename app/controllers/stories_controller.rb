@@ -1,4 +1,7 @@
 class StoriesController < ApplicationController
+  
+  layout "welcome"
+
   # GET /stories
   # GET /stories.xml
   def index
@@ -120,5 +123,17 @@ class StoriesController < ApplicationController
       format.html { redirect_to(root_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def search
+    @stories = Story.search(params[:search_string])
+
+    @search_string = params[:search_string]
+
+    # for select boxes
+    @users            = User.find :all, :order => "name"
+    @statuses         = Status.find :all, :order => "id ASC"
+    @story_types      = StoryType.find :all, :order => "name ASC"
+    @sections         = Section.select_box
   end
 end
