@@ -15,7 +15,14 @@
 <body>
 <div align="center">    
 
-<div id="topmost_bar">ClydeTracker</div>
+<div id="topmost_bar">ClydeTracker
+    <div id="searchbox">
+        <% form_tag("/stories/search", :method => "post") do %>
+            <input type="text" name="search_string" size="40">
+            <%= submit_tag("Search") %>
+        <% end %>
+    </div>
+</div>
 
 <%= yield %>
 

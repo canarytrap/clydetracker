@@ -98,3 +98,8 @@
 		text-align:center;
 		padding-top:8px;
 }
+#searchbox {
+	width:415px;
+	height:24px;
+	float:right;
+}
