@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  
+
   layout "welcome"
 
   # GET /stories
