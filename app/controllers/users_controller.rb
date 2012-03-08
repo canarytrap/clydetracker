@@ -42,6 +42,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+    # TODO: change form field to have name input as well
+    @user.name = params[:user][:username]
+
     respond_to do |format|
       if @user.save
         flash[:notice] = 'User was successfully created.'
