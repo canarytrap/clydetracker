@@ -9,4 +9,14 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   #layout "welcome"   this is not working for some reason
+  #
+  before_filter :authorize, :except => :login
+
+protected
+  def authorize
+    unless User.find_by_id(session[:user_id])
+      flash[:notice] = 'Please Log In'
+      redirect_to(:action => 'login', :controller => 'login')
+    end
+  end
 end

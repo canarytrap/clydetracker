@@ -2,7 +2,7 @@ class LoginController < ApplicationController
 
   layout "welcome"
 
-  def index
+  def login
    if request.post?
      user = User.authenticate(params[:username], params[:password])
      if user
