@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   
   #layout "welcome"   this is not working for some reason
   #
-  before_filter :authorize, :except => :login
+  before_filter :authorize, :except => [:login]
 
 protected
   def authorize

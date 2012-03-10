@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   layout "welcome"
 
+  skip_before_filter :authorize, :only => ['new', 'create']
+
   # GET /users
   # GET /users.xml
   def index

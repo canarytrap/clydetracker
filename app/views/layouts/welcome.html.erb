@@ -16,7 +16,14 @@
 <div align="center">    
 
   <div id="topmost_bar">ClydeTracker
-    <span style="float:right"><%= link_to 'Sign Up', new_user_url %></span>
+    <span style="float:right">
+      <% if !session[:user_id] %>
+        <%= link_to 'Sign Up', new_user_url %>
+      <% end %>
+      <% if session[:user_id] %>
+        <%= link_to 'Logout', :action => 'logout', :controller => 'login' %>
+      <% end %>
+    </span>
 
     <div id="searchbox">
         <% form_tag("/stories/search", :method => "post") do %>
