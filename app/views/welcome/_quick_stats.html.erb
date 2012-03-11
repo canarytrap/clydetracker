@@ -1,10 +1,17 @@
 
-<strong style="font-size:16px;">This Sprint..</strong>
+<strong style="font-size:16px;">This Sprint..</strong><br />
+
 <span style="float:right;"><strong>Points Left</strong>:&nbsp;
-    <%= total_points_left(quick_stats) %></span>
+  <span style="font-size:24px"><%= total_points_left(quick_stats) %></span></span>
 <br /><br />
-<strong>Blocked Items</strong>:&nbsp;
-<span style="color:red;"><%= total_blocked(quick_stats) %></span>
-<br />
-<strong>Ready For QA</strong>:&nbsp;
-<span style="color:green;"><%= total_ready_for_qa(quick_stats) %></span>
+
+<div style="float:left: clear:right">
+  <strong>Unblock Me!</strong>:&nbsp;
+  <span style="color:red; font-size:24px"><%= total_blocked(quick_stats) %></span>
+ </div>
+
+<div style="float:left">
+  <strong>Ready For QA..</strong>:&nbsp;
+  <span style="color:green; font-size:24px"><%= total_ready_for_qa(quick_stats) %></span>
+</div>
+
