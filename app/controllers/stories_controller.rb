@@ -48,8 +48,10 @@ class StoriesController < ApplicationController
       flash[:notice] = 'You did not enter anything.'
       return redirect_to root_url
     end
-
-    @story = Story.new
+    
+    @story = Story.new    
+    @story.author_id      = 1
+    @story.section_id     = 1
 
     # parse first word for story type
     if params[:title].index("bug") == 0
@@ -62,7 +64,7 @@ class StoriesController < ApplicationController
       @story.story_type_id = 1
       story_title = params[:title]
     end
-
+    
     @story.title = story_title
 
     respond_to do |format|
@@ -116,13 +118,13 @@ class StoriesController < ApplicationController
     @story.destroy
 
     flash[:notice] = 'Story has been deleted.'
-
+    
     respond_to do |format|
       format.html { redirect_to(root_url) }
       format.xml  { head :ok }
     end
   end
-
+  
   def search
     @stories = Story.search(params[:search_string])
 
