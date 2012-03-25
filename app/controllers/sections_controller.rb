@@ -6,7 +6,7 @@ class SectionsController < ApplicationController
   # GET /sections.xml
   def index
     @sections = Section.past_sprints
-    
+
     # for select boxes
     @users            = User.find :all, :order => "name"
     @statuses         = Status.find :all, :order => "id ASC"
@@ -72,12 +72,6 @@ class SectionsController < ApplicationController
     current_sprint_end    = DateTime.strptime(params[:end_date], "%Y-%m-%d");
     last_sprint_end       = DateTime.strptime(Section.previous_sprint.end_date.to_s, "%Y-%m-%d");
 
-    # end_date must be at least 5 days greater than start_date
-    if current_sprint_end < (current_sprint_start + 5)
-      flash[:notice] = 'Sprint must be at least 5 days long.'
-      return redirect_to root_url
-    end
-
     # start_date cannot be earlier than last sprints end date
     if current_sprint_start <= last_sprint_end
       flash[:notice] = 'Start Date cannot overlap with the previous sprint.'
@@ -94,7 +88,8 @@ class SectionsController < ApplicationController
         format.html { redirect_to root_url }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        flash[:notice] = @section.errors[:message]
+        format.html { redirect_to root_url }
         format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
       end
     end

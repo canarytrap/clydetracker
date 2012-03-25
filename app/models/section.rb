@@ -1,5 +1,8 @@
+# this is a sprint
 class Section < ActiveRecord::Base
   has_many :stories
+
+  before_update :valid_start_date, :valid_duration
 
   # create a default current sprint if none exists
   def self.create_current_sprint
@@ -23,7 +26,7 @@ class Section < ActiveRecord::Base
     results = find(:all, :conditions => "end_date < curdate()", 
                     :order => "end_date desc", 
                     :limit => 1)
-    results.first                
+    results.first
   end
 
   def self.select_box
@@ -32,10 +35,26 @@ class Section < ActiveRecord::Base
                 {'id' => 2, 'name' => 'Backlog'},
                 {'id' => self.current_sprint.id, 'name' => self.current_sprint.name}]
   end
-  
+
   # we dont want to display 'icebox' or 'backlogs'
   def self.past_sprints
     results = find(:all, :conditions => "id NOT IN (1, 2) AND end_date < curdate()", 
                     :order => "end_date desc")
+  end
+
+private
+  def valid_duration
+    current_sprint_start  = DateTime.strptime(self.start_date.to_s, "%Y-%m-%d")
+    current_sprint_end    = DateTime.strptime(self.end_date.to_s, "%Y-%m-%d")
+
+    if current_sprint_end < (current_sprint_start + 5)
+      errors.add(:message, "Sprint must be at least 5 days long")
+      return false
+    end
+    return true
+  end
+
+  def valid_start_date
+
   end
 end
