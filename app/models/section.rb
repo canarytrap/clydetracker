@@ -55,6 +55,12 @@ private
   end
 
   def valid_start_date
+    current_sprint_start  = DateTime.strptime(self.start_date.to_s, "%Y-%m-%d")
+    last_sprint_end       = DateTime.strptime(Section::previous_sprint.end_date.to_s, "%Y-%m-%d")
 
+    if current_sprint_start <= last_sprint_end
+      errors.add(:message, "Start Date cannot overlap with the previous sprint")
+      return false
+    end
   end
 end

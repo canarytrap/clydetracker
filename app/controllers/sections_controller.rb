@@ -67,17 +67,6 @@ class SectionsController < ApplicationController
   def update
     @section = Section.find(params[:id])
 
-    # TODO: move both these validations to model    
-    current_sprint_start  = DateTime.strptime(params[:start_date], "%Y-%m-%d");
-    current_sprint_end    = DateTime.strptime(params[:end_date], "%Y-%m-%d");
-    last_sprint_end       = DateTime.strptime(Section.previous_sprint.end_date.to_s, "%Y-%m-%d");
-
-    # start_date cannot be earlier than last sprints end date
-    if current_sprint_start <= last_sprint_end
-      flash[:notice] = 'Start Date cannot overlap with the previous sprint.'
-      return redirect_to root_url
-    end
-
     # set these as we are currently coming from welcome page
     @section.start_date = params[:start_date]
     @section.end_date   = params[:end_date]
