@@ -66,12 +66,7 @@ class StoriesController < ApplicationController
   def update
     @story = Story.find(params[:id])
 
-    # TODO: move everything below to model
-    if params[:title].empty?
-      flash[:notice] = 'You did not enter anything.'
-      return redirect_to root_url
-    end
-
+    # mapping the params as this is from a custom form
     @story.title        = params[:title]
     @story.description  = params[:description]
     @story.points       = params[:points]
