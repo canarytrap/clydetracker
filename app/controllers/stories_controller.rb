@@ -45,19 +45,8 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new
 
-    # parse first word for story type
-    if params[:title].index("bug") == 0
-      @story.story_type_id = 3
-      story_title = params[:title][3, params[:title].length]
-    elsif params[:title].index("tech") == 0
-      @story.story_type_id = 2
-      story_title = params[:title][4, params[:title].length]
-    else
-      @story.story_type_id = 1
-      story_title = params[:title]
-    end
-
-    @story.title = story_title
+    # setting the title, as we came from a form on welcome page
+    @story.title = params[:title]
 
     respond_to do |format|
       if @story.save

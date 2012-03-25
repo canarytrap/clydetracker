@@ -4,7 +4,7 @@ class Story < ActiveRecord::Base
 
   validates_presence_of :title
 
-  before_create :add_to_icebox
+  before_create :add_to_icebox, :detect_story_type
 
 # TODO: sql injection validation
   def self.search search_string
@@ -19,5 +19,18 @@ private
   def add_to_icebox
     self.author_id  = 1
     self.section_id = 1
+  end
+
+  # parse first word for story type
+  def detect_story_type
+    if self.title.index("bug") == 0
+      self.story_type_id = 3
+      self.title = self.title[3, self.title.length]
+    elsif self.title.index("tech") == 0
+      self.story_type_id = 2
+      self.title = self.title[4, self.title.length]
+    else
+      self.story_type_id = 1
+    end
   end
 end
