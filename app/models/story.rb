@@ -2,6 +2,8 @@ class Story < ActiveRecord::Base
   belongs_to :section
   has_many :assignees
 
+  validates_presence_of :title
+
   before_create :add_to_icebox
 
 # TODO: sql injection validation

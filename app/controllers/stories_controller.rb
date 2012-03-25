@@ -43,12 +43,6 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.xml
   def create
-    # TODO: move everything below to model
-    if params[:title].empty?
-      flash[:notice] = 'You did not enter anything.'
-      return redirect_to root_url
-    end
-
     @story = Story.new
 
     # parse first word for story type
@@ -71,7 +65,8 @@ class StoriesController < ApplicationController
         format.html { redirect_to root_url }
         format.xml  { render :xml => @story, :status => :created, :location => @story }
       else
-        format.html { render :action => "new" }
+        flash[:notice] = @story.errors[:title]
+        format.html { redirect_to root_url }
         format.xml  { render :xml => @story.errors, :status => :unprocessable_entity }
       end
     end
