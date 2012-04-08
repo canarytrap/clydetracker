@@ -17,19 +17,19 @@ module StoriesHelper
     when 3
       return 'style="background-color:#FF6A6A;"'
     when 4
-      return 'style="background-color:#43CD80;"'      
+      return 'style="background-color:#43CD80;"'
     when 8
       return 'style="background-color:#90EE90;"'
     end
   end
-  
+
   # TODO: use inject enumerator on below methods
   def total_points stories
     sum = 0
     stories.each do |story| 
       if !story.points.nil?
         sum += story.points
-      end  
+      end
     end
     return sum
   end
@@ -42,33 +42,37 @@ module StoriesHelper
       if !story.points.nil?
         if unfinished_status.include? story.status_id
             sum += story.points
-        end  
+        end
       end
     end
     return sum
   end
-  
+
   def total_blocked stories
     sum = 0
     stories.each do |story| 
       if story.status_id == 3
         sum += 1
-      end  
+      end
     end
     return sum
   end
-  
+
   def total_ready_for_qa stories
     sum = 0
     stories.each do |story| 
       if story.status_id == 8
         sum += 1
-      end  
+      end
     end
     return sum
   end
-  
+
   def format_title story, length
     return (story.title.length > length) ? story.title[0..length] + '..' : story.title
+  end
+
+  def avg_velocity
+    77
   end
 end
