@@ -1,12 +1,11 @@
 class WelcomeController < ApplicationController
   def index
-    # stories
-    @stories_icebox   = Story.find_all_by_section_id(1, :order => "id DESC")
-    @stories_backlog  = Story.find_all_by_section_id(2, :order => "id DESC")
-
     # if it doesnt exist lets create a default one
     Section.create_current_sprint
 
+    # stories for each section
+    @stories_icebox   = Story.find_all_by_section_id(1, :order => "id DESC")
+    @stories_backlog  = Story.find_all_by_section_id(2, :order => "id DESC")
     @current_sprint   = Section.current_sprint
     @stories_current  = Story.find_all_by_section_id(@current_sprint, :order => "id DESC")
 
