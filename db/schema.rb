@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120302021226) do
+ActiveRecord::Schema.define(:version => 20120325230742) do
 
   create_table "assignees", :force => true do |t|
     t.integer  "user_id"
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(:version => 20120302021226) do
   create_table "story_types", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "story_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "author_id"
+    t.string   "hours"
+    t.integer  "status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

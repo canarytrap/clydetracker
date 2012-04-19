@@ -1,0 +1,33 @@
+<p>
+  <b>Story:</b>
+  <%=h @task.story_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @task.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @task.description %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%=h @task.author_id %>
+</p>
+
+<p>
+  <b>Hours:</b>
+  <%=h @task.hours %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @task.status_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

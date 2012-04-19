@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   belongs_to :section
   has_many :assignees
+  has_many :tasks
 
   validates_presence_of :title
 
