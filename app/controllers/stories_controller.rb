@@ -77,11 +77,11 @@ class StoriesController < ApplicationController
     @story.section_id   = params[:section_id]
 
     # TODO: move to model
+    # updating the current tasks
     @story.tasks.each do |task|
-      # reconstructing the suffixed task ID from view
-      #@story.tasks << task.title = params[:task + '_' + task.id]
-      puts "------------"
-      puts task.inspect
+      # reconstructing the suffixed task ID from the view
+      @task = Task.find_by_id(task.id)
+      @task.update_attributes(:title => params['task_' + task.id.to_s])
     end
 
     # new task created

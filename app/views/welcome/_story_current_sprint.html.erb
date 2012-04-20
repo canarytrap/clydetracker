@@ -17,11 +17,12 @@
         <textarea name="description" cols="95" rows="15"><%= story_current_sprint.description %></textarea>
         <br /><br />
 
-        Tasks:<br />
+        Add a Task:<br />
         <!-- new task -->
         <input type="text" name="newtask" size="100">
-
+        <br /><br />
         <!-- current tasks -->
+        Current Tasks:<br />
         <% story_current_sprint.tasks.each do |task| %>
           <input type="text" name="task_<%= task.id %>" value="<%= task.title %>" size="100">
           <br />
