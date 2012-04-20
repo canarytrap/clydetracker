@@ -75,6 +75,23 @@ class StoriesController < ApplicationController
     @story.story_type_id = params[:story_type_id]
     @story.section_id   = params[:section_id]
 
+    # TODO: move to model
+    # if a task was specified
+    @tasks = Task.find_all_by_story_id(params[:id])
+    if @tasks.length > 0
+# how to do updates?
+=begin
+      @tasks.each do |task|
+        # reconstructing the suffixed task ID from view
+        @story.tasks << task.title = params[:task + '_' + task.id]
+      end
+=end
+    else
+      if params[:task].length > 2
+        @story.tasks << Task.new(:title => params[:task], :status_id => 1)
+      end
+    end
+
     respond_to do |format|
       if @story.update_attributes(params[:story])
         flash[:notice] = 'Story has been updated.'

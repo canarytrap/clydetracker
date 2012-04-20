@@ -1,21 +1,33 @@
 
+<!-- story title -->
 <div class="story_current_sprint" id="story_<%= story_current_sprint.id %>" <%= story_color(story_current_sprint) %> onclick="toggle_div('story_details_<%= story_current_sprint.id %>')">
     <%= story_icon(story_current_sprint) %>
     <%= format_title(story_current_sprint, 94) %>
     <span style="float:right; padding:4px;"><strong><%= story_current_sprint.points %></strong></span>
 </div>
 
+<!-- hidden div with details -->
 <div class="story_details" id="story_details_<%= story_current_sprint.id %>">  
     <% form_for(story_current_sprint) do |f| %>
         Title:<br />
         <input type="text" name="title" value="<%= story_current_sprint.title %>" size="100">
         <br /><br />
-        
+
         Description:<br />
         <textarea name="description" cols="95" rows="15"><%= story_current_sprint.description %></textarea>
         <br /><br />
 
-        Status:               
+        Tasks:<br />
+        <!-- showing default empty box if no tasks yet -->
+        <input type="text" name="task" size="100">
+
+        <% story_current_sprint.tasks.each do |task| %>
+          <input type="text" name="task_<%= task.id %>" value="<%= task.title %>" size="100">
+          <br />
+        <% end %>
+        <br /><br />
+
+        Status:
         <select name="status_id">
         <% @statuses.each do |status| %>
             <option value="<%= status.id %>" <%= story_current_sprint.status_id == status.id ? "selected" : "" %>><%= status.name %></option>
@@ -31,7 +43,7 @@
         <% end %>
         </select>
         <br /><br />
-        
+
         Type:
         <select name="story_type_id">
         <% @story_types.each do |story_type| %>
@@ -39,7 +51,7 @@
         <% end %>
         </select>
         <br /><br />
-        
+
         Move To:
         <select name="section_id">
         <% @sections.each do |section| %>
@@ -47,16 +59,17 @@
         <% end %>
         </select>
         <br /><br />
-        
+
         Points:&nbsp;
         <input type="text" name="points" value="<%= story_current_sprint.points %>" size="4">
         <br /><br />
-        
+
         <%= f.submit 'Update' %>
     <% end %>
-    
+
     <br />
     <% form_tag(story_path(story_current_sprint.id), :method => 'delete', :onclick => "return confirm('Are you sure?')") do %>
         <%= submit_tag "Delete" %>
-    <% end %>             
+    <% end %>
 </div>
+

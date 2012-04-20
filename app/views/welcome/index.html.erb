@@ -1,5 +1,6 @@
 
 <script type="text/javascript">
+// for changing date of current sprint
 $(document).ready(function() {
 	$("#start_date").datepicker({ dateFormat: 'yy-mm-dd' });
 	$("#end_date").datepicker({ dateFormat: 'yy-mm-dd' });
@@ -14,10 +15,10 @@ $(document).ready(function() {
             <input class="new_story_input" type="text" name="title">&nbsp;
             <%= submit_tag("Save") %>
         <% end %>
-        
+
         <div id="flash_msg"><%= flash[:notice] %></div>
     </div>
-    
+
     <div id="quick_stats">
         <%= render(:partial => 'quick_stats', :object => @stories_current) %>
     </div>
@@ -41,7 +42,7 @@ $(document).ready(function() {
                 <%= total_points(@stories_current) %>
             </strong>&nbsp;points&nbsp;
         </span>
-    </div>    
+    </div>
 
     <!-- hidden div for current sprint options -->
     <!-- TODO: make this a partial -->
@@ -54,13 +55,13 @@ $(document).ready(function() {
             <%= submit_tag "Update" %>
         <% end %>
     </div>
-    
+
     <br /><br />
 
     <!-- all stories in current sprint -->
     <%= render(:partial => "story_current_sprint", :collection => @stories_current) %>
     <div style="clear:both;">&nbsp;</div>
-    
+
     <!-- past sprints -->
     <div class="stories_container_previous_sprint">
         <br />
@@ -77,7 +78,7 @@ $(document).ready(function() {
 
         <!-- all stories in previous sprint -->
         <%= render(:partial => "story_current_sprint", :collection => @stories_previous) %>
-        
+
         <span style="padding-left:6px; font-size:16px;"<%= link_to "Past Sprints", sections_url %></span>
     </div>    
 </div>
