@@ -18,9 +18,10 @@
         <br /><br />
 
         Tasks:<br />
-        <!-- showing default empty box if no tasks yet -->
-        <input type="text" name="task" size="100">
+        <!-- new task -->
+        <input type="text" name="newtask" size="100">
 
+        <!-- current tasks -->
         <% story_current_sprint.tasks.each do |task| %>
           <input type="text" name="task_<%= task.id %>" value="<%= task.title %>" size="100">
           <br />

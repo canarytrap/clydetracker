@@ -77,22 +77,18 @@ class StoriesController < ApplicationController
     @story.section_id   = params[:section_id]
 
     # TODO: move to model
-    # if a task was specified
-    @tasks = Task.find_all_by_story_id(params[:id])
-    if @tasks.length > 0
-# how to do updates?
-=begin
-      @tasks.each do |task|
-        # reconstructing the suffixed task ID from view
-        @story.tasks << task.title = params[:task + '_' + task.id]
-      end
-=end
-    else
-      if params[:task] && params[:task].length > 2
-        @story.tasks << Task.new(:title       => params[:task], 
-                                  :status_id  => 1,
-                                  :author_id  => session[:user_id])
-      end
+    @story.tasks.each do |task|
+      # reconstructing the suffixed task ID from view
+      #@story.tasks << task.title = params[:task + '_' + task.id]
+      puts "------------"
+      puts task.inspect
+    end
+
+    # new task created
+    if params[:newtask] && params[:newtask].length > 2
+      @story.tasks << Task.new(:title       => params[:newtask],
+                                :status_id  => 1,
+                                :author_id  => session[:user_id])
     end
 
     respond_to do |format|
