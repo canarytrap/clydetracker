@@ -46,7 +46,8 @@ class StoriesController < ApplicationController
     @story = Story.new
 
     # setting the title, as we came from a form on welcome page
-    @story.title = params[:title]
+    @story.title      = params[:title]
+    @story.author_id  = session[:user_id]
 
     respond_to do |format|
       if @story.save
@@ -87,8 +88,10 @@ class StoriesController < ApplicationController
       end
 =end
     else
-      if params[:task].length > 2
-        @story.tasks << Task.new(:title => params[:task], :status_id => 1)
+      if params[:task] && params[:task].length > 2
+        @story.tasks << Task.new(:title       => params[:task], 
+                                  :status_id  => 1,
+                                  :author_id  => session[:user_id])
       end
     end
 

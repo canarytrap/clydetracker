@@ -18,7 +18,6 @@ class Story < ActiveRecord::Base
 private
   # when creating a new story, set default values here
   def add_to_icebox
-    self.author_id  = 1
     self.section_id = 1
   end
 
