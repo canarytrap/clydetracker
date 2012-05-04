@@ -26,6 +26,9 @@
         <% story_current_sprint.tasks.each do |task| %>
           <% if task.status_id != 1 %>
             &nbsp;<del><%= task.title %></del>
+            <!-- keep title/checked_status in hidden field so we dont lose titles upon update -->
+            <input type="hidden" name="task_<%= task.id %>" value="<%= task.title %>">
+            <input type="hidden" name="task_done[<%= task.id %>]">
           <% else %>
             <input type="text" name="task_<%= task.id %>" value="<%= task.title %>" size="100">
             <input type="checkbox" name="task_done[<%= task.id %>]">
