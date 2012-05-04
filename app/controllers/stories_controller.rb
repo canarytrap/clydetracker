@@ -81,7 +81,18 @@ class StoriesController < ApplicationController
     @story.tasks.each do |task|
       # reconstructing the suffixed task ID from the view
       @task = Task.find_by_id(task.id)
-      @task.update_attributes(:title => params['task_' + task.id.to_s])
+
+      # was task checked off?
+      # TODO: remove magic number
+      if params[:task_done] && 
+        params[:task_done].has_key?(task.id.to_s)
+        status_id = 8
+      else
+        status_id = 1
+      end
+
+      @task.update_attributes(:title    => params['task_' + task.id.to_s],
+                             :status_id => status_id)
     end
 
     # new task created
