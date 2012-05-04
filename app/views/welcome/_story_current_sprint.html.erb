@@ -24,8 +24,12 @@
         <!-- current tasks -->
         Current Tasks:<br />
         <% story_current_sprint.tasks.each do |task| %>
-          <input type="text" name="task_<%= task.id %>" value="<%= task.title %>" size="100">
-          <input type="checkbox" name="task_done[<%= task.id %>]">
+          <% if task.status_id != 1 %>
+            &nbsp;<del><%= task.title %></del>
+          <% else %>
+            <input type="text" name="task_<%= task.id %>" value="<%= task.title %>" size="100">
+            <input type="checkbox" name="task_done[<%= task.id %>]">
+          <% end %>
           <br />
         <% end %>
         <br /><br />
