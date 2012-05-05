@@ -51,7 +51,6 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        flash[:notice] = 'Story has been added to icebox'
         format.html { redirect_to root_url }
         format.xml  { render :xml => @story, :status => :created, :location => @story }
       else
@@ -104,7 +103,6 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
-        flash[:notice] = 'Story has been updated.'
         format.html { redirect_to root_url }
         format.xml  { head :ok }
       else
@@ -120,8 +118,6 @@ class StoriesController < ApplicationController
   def destroy
     @story = Story.find(params[:id])
     @story.destroy
-
-    flash[:notice] = 'Story has been deleted.'
 
     respond_to do |format|
       format.html { redirect_to(root_url) }
