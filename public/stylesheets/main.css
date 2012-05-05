@@ -83,6 +83,7 @@
     display:none;
 		margin:1px;
     padding:3px;
+    color:#383838;
 }
 #current_sprint_details {
 		display:none;
@@ -100,4 +101,12 @@
 	width:365px;
 	height:24px;
 	float:right;
+}
+#story_current_select_boxes {
+  border-style:solid;
+  border-width:thin;
+  border-color:gray;
+  background-color:#e0e0e0;
+  padding:5px;
+  width:300px;
 }
