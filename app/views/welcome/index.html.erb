@@ -77,8 +77,9 @@ $(document).ready(function() {
         <!-- all stories in previous sprint -->
         <%= render(:partial => "story_current_sprint", :collection => @stories_previous) %>
 
+        <br />
         <span style="padding-left:6px; font-size:16px;"><%= link_to "Past Sprints", sections_url %></span>
-    </div>    
+    </div>
 </div>
 
 <div class="stories_container">
