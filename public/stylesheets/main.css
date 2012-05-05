@@ -92,11 +92,9 @@
 }
 #flash_msg {
 		width:100%;
-		height:26px;
 		font-size:13px;
-		color:#9AC0CD;
+		color:red;
 		text-align:center;
-		padding-top:8px;
 }
 #searchbox {
 	width:365px;
