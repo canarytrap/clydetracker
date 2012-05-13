@@ -75,20 +75,14 @@ class StoriesController < ApplicationController
     @story.story_type_id = params[:story_type_id]
     @story.section_id   = params[:section_id]
 
-    # TODO: move to model
+    # TODO: move to model?
     # updating the current tasks
     @story.tasks.each do |task|
       # reconstructing the suffixed task ID from the view
       @task = Task.find_by_id(task.id)
 
-      # was task checked off?
-      # TODO: remove magic number
-      if params[:task_done] && 
-        params[:task_done].has_key?(task.id.to_s)
-        status_id = 8
-      else
-        status_id = 1
-      end
+      # set status id to finished if checkbox checked
+      status_id = Task.set_status_done(task.id.to_s, params[:task_done])
 
       @task.update_attributes(:title    => params['task_' + task.id.to_s],
                              :status_id => status_id)
